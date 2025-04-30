@@ -1,0 +1,34 @@
+# src/main/resources/application.yml
+spring:
+  application:
+    name: jpa-app
+  config:
+    import: "configserver:http://configuser:configpass@localhost:8888"
+
+  # H2 Database configuration (as a fallback in case Config Server is unavailable)
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+
+# Eureka configuration (as a fallback)
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# Setting logging level to debug connection issues
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    org.springframework.web: INFO
+    com.example.jpa_app: DEBUG

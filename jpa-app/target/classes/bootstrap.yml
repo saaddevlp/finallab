@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: jpa-app
+  cloud:
+    config:
+      uri: http://localhost:8888
+      username: configuser
+      password: configpass
+      fail-fast: true  # Application will fail to start if it cannot connect to the Config Server
