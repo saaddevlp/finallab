@@ -1,0 +1,27 @@
+# Common configuration shared by all applications
+server:
+  port: 0  # Random port by default for microservices
+
+# Eureka client configuration for service discovery
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+# Management endpoints configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# Logging configuration
+logging:
+  level:
+    org.springframework.cloud: INFO
+    org.springframework.web: INFO

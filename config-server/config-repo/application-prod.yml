@@ -1,0 +1,28 @@
+# Production environment specific configuration
+
+# Logging configuration for production
+logging:
+  level:
+    root: WARN
+    org.springframework: INFO
+    com.pafuniversity: INFO
+  file:
+    name: /var/log/pafuniversity/application.log
+
+# H2 console disabled in production
+spring:
+  h2:
+    console:
+      enabled: false
+  jpa:
+    show-sql: false
+
+# Management endpoints for production (restricted)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized

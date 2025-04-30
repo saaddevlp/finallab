@@ -1,0 +1,45 @@
+# Application configuration for the Config Server
+
+# Server configuration
+server:
+  port: 8888  # Standard port for Config Server
+
+# Spring configuration
+spring:
+  application:
+    name: config-server
+
+  # Disable compatibility verification to allow Spring Boot 3.4.5
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    config:
+      server:
+        git:
+          # Local Git repository path - replace with your actual path
+          uri: file:///Users/mohammadsaad/config-repo
+
+          # Uncomment and configure these for using an online Git repository
+          # uri: https://github.com/yourusername/config-repo
+          # username: your-github-username  # For private repositories
+          # password: your-github-password  # For private repositories
+
+          clone-on-start: true  # Clone the repository when the server starts
+          default-label: main   # The default branch to use (main or master)
+
+# Management and monitoring configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Expose all actuator endpoints for monitoring
+  endpoint:
+    health:
+      show-details: always  # Show detailed health information
+
+# Logging configuration
+logging:
+  level:
+    org.springframework.cloud: INFO
+    org.springframework.security: INFO
+    com.example: DEBUG
