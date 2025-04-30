@@ -1,0 +1,30 @@
+# Eureka Server specific configuration
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+  # Disable security for the Eureka server in this example
+  security:
+    basic:
+      enabled: false
+
+# Eureka server configuration
+eureka:
+  client:
+    register-with-eureka: false  # Don't register itself with Eureka
+    fetch-registry: false        # Don't fetch registry information from Eureka
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false
+
+# Management endpoints for Eureka server
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

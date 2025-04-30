@@ -1,0 +1,27 @@
+# Development environment specific configuration
+
+# Logging configuration for development
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
+    com.pafuniversity: DEBUG
+
+# H2 console for development
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# Management endpoints for development
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
